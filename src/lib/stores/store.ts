@@ -1,9 +1,20 @@
 import { writable } from "svelte/store";
 
-export const ideas = writable([]);
-export let notes = writable([])
+interface Idea {
+    id: number;
+    nameIdea: string;
+    onEdit: boolean;
+}
 
-export let numIdeas = writable(0)
+interface Note {
+    id: number;
+    noteContent: string;
+    onEdit: boolean;
+    noteHeight: number;
+}
+
+export const ideas = writable<Idea[]>([]);
+export const notes = writable<Note[]>([]);
 
 export function updateIdeas(newData:any){
     ideas.set(newData)

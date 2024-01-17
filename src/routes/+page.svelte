@@ -9,17 +9,17 @@
     
     export let data: PageData;
 
-    function create_new_idea(ideaName:string) {
-        ideas.update(myIdea => {
-            return [...myIdea, { "id": contador+=1,"nameIdea": ideaName, "onEdit": false }];
-        })
-        create_new_note()
+    function create_new_idea(ideaName: string) {
+        ideas.update(myIdeas => {
+            return [...myIdeas, { "id": contador += 1, "nameIdea": ideaName, "onEdit": false }];
+        });
+        create_new_note();
     }
 
     function create_new_note() {
-        notes.update(myNote => {
-            return [...myNote, { "id": contador,"noteContent": "", "onEdit": false, "noteHeight": 0 }];
-        })
+        notes.update(myNotes => {
+            return [...myNotes, { "id": contador, "noteContent": "", "onEdit": false, "noteHeight": 0 }];
+        });
     }
 </script>
 

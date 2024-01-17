@@ -1,20 +1,31 @@
 <script lang="ts">
     import { ideas, updateIdeas } from "$lib/stores/store";
-    export let idea;
-
     
+    interface Idea {
+        id: number;
+        nameIdea: string;
+        onEdit: boolean;
+    }
+
+    export let idea:Idea;
     let edited_text = "";
     
-    function change_editable_state() {
+    function change_editable_state(): void {
         idea.onEdit = !idea.onEdit;
         updateIdeas([...$ideas]);
     }
     
-    function change_idea_name() {
-        idea.nameIdea = edited_text;
-        idea.onEdit = false;
-
-        updateIdeas([...$ideas]);
+    function change_idea_name(): void {
+        if (edited_text == "") {
+            idea.nameIdea = "Name it whenever you want :)";
+            idea.onEdit = false;
+        }
+        else {
+            idea.nameIdea = edited_text;
+            idea.onEdit = false;
+    
+            updateIdeas([...$ideas]);
+        }
     }
 </script>
 
