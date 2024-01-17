@@ -10,6 +10,10 @@
         padding: 0;
         box-sizing: border-box;
     }
+
+    :global(button) {
+        min-width:40px;
+    }
 </style>
 
 <slot></slot>

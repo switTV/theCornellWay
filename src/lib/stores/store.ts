@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-export let ideas = writable([])
+export const ideas = writable([]);
 export let notes = writable([])
 
 export let numIdeas = writable(0)

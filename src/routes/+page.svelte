@@ -13,17 +13,19 @@
         ideas.update(myIdea => {
             return [...myIdea, { "id": contador+=1,"nameIdea": ideaName, "onEdit": false }];
         })
-        console.log($ideas)
         create_new_note()
     }
 
     function create_new_note() {
         notes.update(myNote => {
-            return [...myNote, { "id": contador,"noteContent": "", "onEdit": false }];
+            return [...myNote, { "id": contador,"noteContent": "", "onEdit": false, "noteHeight": 0 }];
         })
-        console.log($ideas)
     }
 </script>
+
+<svelte:head>
+    <title>The Cornell way</title>
+</svelte:head>
 
 <style>
     .grid_container {  
@@ -42,7 +44,7 @@
 
     .questions_container {
         grid-area: questions_container;
-        background-color: #e4e4e4;
+        background-color: #1D7874;
         border-right: #000000 2px solid;
         border-bottom: #000000 2px solid;
         overflow-y: scroll;
@@ -50,22 +52,45 @@
     
     .notes_container {
         grid-area: notes_container;
-        background-color: #d6d6d6;
+        background-color: #1D7874;
         border-bottom: #000000 2px solid;
         overflow-y: scroll;
     }
 
     .resume_container {
         grid-area: resume_container;
-        background-color: #133b52;
+        background-color: #ffffff;
     }
 
     .header_top {
         width: 100%;
+        height: 60px;
+        background-color: #1D7874;
+        border-bottom: #0B132B 2px solid;
+        color: #fff;
+        font-family: "Roboto Slab", serif;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .header_notes {
-        height: 90%;
+    .notes {
+        margin-top: 20px;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .questions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
 
 </style>
@@ -78,7 +103,7 @@
                 <h2>Ideas</h2>
                 
             </div>
-            <div class="body_question">
+            <div class="question">
                 {#if $ideas.length === 0}
                     <button on:click={() => {create_new_idea("Name it whenever you want :)")}}>+</button>
                     {:else}
@@ -91,17 +116,17 @@
                 {/if}
             </div>
         </div>
-        <div class="notes_container header_top">
-            <div class="header_notes">
+        <div class="notes_container">
+            <div class="header_notes header_top">
                 <h2>Notes</h2>
-                <div class="body_notes">
-                    <div class="notes">
-                        {#each $ideas as idea}
-                            <NoteCard {idea}></NoteCard>
-                        {/each}
-                    </div>
-                </div>
             </div>
+            <div class="notes">
+                {#each $ideas as idea}
+                    <NoteCard {idea}></NoteCard>
+                {/each}
+            </div>
+        </div>
+        <div class="body_notes">
         </div>
         <div class="resume_container">
             <h2>resume: </h2>
