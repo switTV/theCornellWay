@@ -18,7 +18,7 @@
 
     function create_new_note() {
         notes.update(myNotes => {
-            return [...myNotes, { "id": contador, "noteContent": "", "onEdit": false, "noteHeight": 0 }];
+            return [...myNotes, { "id": contador, "noteContent": "", "onEdit": false, "noteHeight": 81 }];
         });
     }
 </script>

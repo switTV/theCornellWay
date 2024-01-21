@@ -13,6 +13,12 @@
 
     :global(button) {
         min-width:40px;
+        height: 40px;
+        border-radius: 50%;
+        border: #fff 2px solid;
+        background-color: transparent;
+        color: white;
+        font-size: 26px;
     }
 </style>
 
